@@ -43,9 +43,9 @@ class DatabseHandler:
 
     def show_top3_records(self,records):
         print("Here are the most popular tickets in the past month.")
-        print("-"+records[0]+"("+records[1]+"tickets sold)")
-        print("-"+records[2]+"("+records[3]+"tickets sold)")
-        print("-"+records[4]+"("+records[5]+"tickets sold)")
+        print(f"-{records[0]}({records[1]}+tickets sold)")
+        print(f"-{records[2]}({records[3]}+tickets sold)")
+        print(f"-{records[4]}({records[5]}+tickets sold)")
 
 pipeline = DatabseHandler('root', 'Riley123$','PipelineMiniProject')
 print(pipeline)
