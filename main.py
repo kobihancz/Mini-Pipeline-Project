@@ -39,18 +39,20 @@ class DatabseHandler:
         with self.connection.cursor() as cursor:
             cursor.execute(sql_statement)
             records = cursor.fetchall()
+            # print(records)
             return records
 
     def show_top3_records(self,records):
+        popular_tickets = self.query_popular_tickets()
         print("Here are the most popular tickets in the past month.")
-        print(f"-{records[0]}({records[1]}+tickets sold)")
-        print(f"-{records[2]}({records[3]}+tickets sold)")
-        print(f"-{records[4]}({records[5]}+tickets sold)")
+        print(f"-{popular_tickets[0][0]}({popular_tickets[0][1]} tickets sold)")
+        print(f"-{popular_tickets[1][0]}({popular_tickets[1][1]} tickets sold)")
+        print(f"-{popular_tickets[2][0]}({popular_tickets[2][1]} tickets sold)")
 
 pipeline = DatabseHandler('root', 'Riley123$','PipelineMiniProject')
 print(pipeline)
 pipeline.load_third_party("/Users/kobihancz/Downloads/Springboard Data engineering/Data Pipeline Mini Project /third_party_sales_1.csv")
-pipeline.query_popular_tickets()
+print(pipeline.query_popular_tickets())
 pipeline.show_top3_records(pipeline.query_popular_tickets())
 
 
