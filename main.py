@@ -43,11 +43,15 @@ class DatabseHandler:
             return records
 
     def show_top3_records(self,records):
-        popular_tickets = self.query_popular_tickets()
-        print("Here are the most popular tickets in the past month.")
-        print(f"-{popular_tickets[0][0]}({popular_tickets[0][1]} tickets sold)")
-        print(f"-{popular_tickets[1][0]}({popular_tickets[1][1]} tickets sold)")
-        print(f"-{popular_tickets[2][0]}({popular_tickets[2][1]} tickets sold)")
+        with open('/Users/kobihancz/Downloads/Springboard Data engineering/Data Pipeline Mini Project /output.txt','w') as outfile:
+            popular_tickets = self.query_popular_tickets()
+            outfile.write("Here are the most popular tickets in the past month.")
+            outfile.write('\n')
+            outfile.write(f"-{popular_tickets[0][0]}({popular_tickets[0][1]} tickets sold)")
+            outfile.write('\n')
+            outfile.write(f"-{popular_tickets[1][0]}({popular_tickets[1][1]} tickets sold)")
+            outfile.write('\n')
+            outfile.write(f"-{popular_tickets[2][0]}({popular_tickets[2][1]} tickets sold)")
 
 pipeline = DatabseHandler('root', 'Riley123$','PipelineMiniProject')
 print(pipeline)
